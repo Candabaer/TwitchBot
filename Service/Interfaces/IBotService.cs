@@ -2,7 +2,7 @@
 {
 	public interface IBotService
 	{
-		void Run();
+		Task Run();
 		void ConnectToProvider();
 	}
 }

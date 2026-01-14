@@ -1,6 +1,7 @@
 ﻿
 using Microsoft.Extensions.Configuration;
 using System.Diagnostics;
+using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using TwitchBot.Model;
 using TwitchBot.Utility;
@@ -87,6 +88,21 @@ namespace TwitchBot.Service.Implementation
 				if (refreshedToken != null)
 					return refreshedToken;
 			}
+		}
+
+
+		public async Task<IdentityToken> GetIdentityTokenAsync(AccessToken token)
+		{
+			using var request = new HttpRequestMessage(HttpMethod.Get, "https://id.twitch.tv/oauth2/validate");
+			request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token.access_token);
+			request.Headers.Add("Client-Id", _config["Twitch:ClientId"]!);
+
+			var response = await _client.SendAsync(request);
+
+			var result = await response.Content.ReadFromJsonAsync<IdentityToken>();
+			if (result == null)
+				throw new Exception("Twitch returned an empty OAuth validation response");
+			return result;
 		}
 
 	}

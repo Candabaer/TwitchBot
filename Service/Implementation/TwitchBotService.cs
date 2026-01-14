@@ -1,17 +1,21 @@
-﻿using TwitchBot.Service.Interfaces;
+﻿using TwitchBot.Model;
+using TwitchBot.Service.Interfaces;
 
 namespace TwitchBot.Service.Implementation
 {
 	public class TwitchBotService : IBotService
 	{
-		public TwitchBotService()
+		TwitchAPIClient _client;
+		public TwitchBotService(IHttpClientFactory httpClientFactory, TwitchAPIClient twitchAPIClient)
 		{
-			 
+			_client = twitchAPIClient;
 		}
 
-		public void Run()
-		{
 
+
+		public async Task Run()
+		{
+			await _client.SendMessage();
 		}
 
 		public void ConnectToProvider()
