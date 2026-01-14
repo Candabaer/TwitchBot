@@ -9,9 +9,9 @@ namespace TwitchBot.Runner
 	public class BotRunner : BackgroundService
 	{
 		private readonly IBotService _bot;
-		AccessTokenService _accessTokenService;
+		TwitchUserSession _accessTokenService;
 
-		public BotRunner(IBotService bot, AccessTokenService accessTokenService)
+		public BotRunner(IBotService bot, TwitchUserSession accessTokenService)
 		{
 			_accessTokenService = accessTokenService;
 			_bot = bot;

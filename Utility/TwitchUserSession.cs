@@ -8,13 +8,15 @@ using TwitchBot.Service.Implementation;
 
 namespace TwitchBot.Utility
 {
-	public class AccessTokenService
+	public class TwitchUserSession
 	{
 		public AccessToken _accessToken { get; private set; }
+		public IdentityToken _identity { get; private set; }
 		public DateTime _expireTime { get; private set; }
 
 		TwitchAuthService _twitchAuthService;
-		public AccessTokenService(TwitchAuthService twitchAuthService) { 
+
+		public TwitchUserSession(TwitchAuthService twitchAuthService) { 
 			_twitchAuthService = twitchAuthService;
 		}
 
@@ -23,6 +25,8 @@ namespace TwitchBot.Utility
 			var deviceCode = await _twitchAuthService.RequestDeviceCodeAsync();
 			_accessToken = await _twitchAuthService.PollForAccessToken(deviceCode);
 			_expireTime = DateTime.Now.AddSeconds(_accessToken.expires_in - 60);
+
+			_identity = await _twitchAuthService.GetIdentityTokenAsync(_accessToken);
 		}
 
 		public async Task ForceRefresh()
