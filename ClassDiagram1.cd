@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access">
+  <Class Name="TwitchBot.Model.WebSocket.EventSubWebSocketRequest">
+    <Position X="5.5" Y="6" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAKAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\WebSocket\EventSubWebSocketRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Model.WebSocket.Condition">
+    <Position X="13.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\WebSocket\EventSubWebSocketRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Model.WebSocket.Transport">
+    <Position X="3.75" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\WebSocket\EventSubWebSocketRequest.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Model.WebSocket.MetaData">
+    <Position X="7.75" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAACAAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\WebSocket\MetaData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Model.WebSocket.Payload">
+    <Position X="7.75" Y="7.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\WebSocket\Payload.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Model.WebSocket.Session">
+    <Position X="7.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAQAAAAAAAAAQQAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Model\WebSocket\Session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Model.WebSocket.WebSocketReceive">
+    <Position X="9.75" Y="8.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Model\WebSocket\WebSocketReceive.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Model.AccessToken">
+    <Position X="10.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAgCAAAAAQAA=</HashCode>
+      <FileName>Model\AccessToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Model.DeviceCodeResponse">
+    <Position X="14.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAkAAAAAAAAAAAAACAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Model\DeviceCodeResponse.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Model.IdentityToken">
+    <Position X="11.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAgAAAAAABAAAAgAAAAAAAAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>Model\IdentityToken.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Runner.BotRunner">
+    <Position X="7" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAACAAAAAEA=</HashCode>
+      <FileName>Runner\BotRunner.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Service.Implementation.TwitchAPIClient">
+    <Position X="16.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAEAAACAAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Service\Implementation\TwitchAPIClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Service.Implementation.TwitchAuthService">
+    <Position X="3" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAEAAAAQIAEAAAEBQAAAAAIAAAAACAAA=</HashCode>
+      <FileName>Service\Implementation\TwitchAuthService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Service.Implementation.TwitchBotService" BaseTypeListCollapsed="true">
+    <Position X="5.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAIAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Service\Implementation\TwitchBotService.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="TwitchBot.Service.Implementation.TwitchWebSocketClient">
+    <Position X="11.5" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAIAAAAICAAAABEAAAAAAAAA=</HashCode>
+      <FileName>Service\Implementation\TwitchWebSocketClient.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Utility.StartBrowser">
+    <Position X="19" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Utility\StartBrowser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Utility.TokenHandler">
+    <Position X="8.75" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABIAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Utility\TokenHandler.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TwitchBot.Utility.TwitchUserSession">
+    <Position X="13.25" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAAAAAAEBABAAAAIAAAAAAABE=</HashCode>
+      <FileName>Utility\TwitchUserSession.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="TwitchBot.Service.Interfaces.IBotService" Collapsed="true">
+    <Position X="5.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Service\Interfaces\IBotService.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

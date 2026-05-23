@@ -13,6 +13,7 @@ namespace TwitchBot.Utility
 		public AccessToken _accessToken { get; private set; }
 		public IdentityToken _identity { get; private set; }
 		public DateTime _expireTime { get; private set; }
+		private TwitchWebSocketClient twitchWebSocketClient;
 
 		TwitchAuthService _twitchAuthService;
 
@@ -27,6 +28,13 @@ namespace TwitchBot.Utility
 			_expireTime = DateTime.Now.AddSeconds(_accessToken.expires_in - 60);
 
 			_identity = await _twitchAuthService.GetIdentityTokenAsync(_accessToken);
+
+			twitchWebSocketClient = new TwitchWebSocketClient();
+			await twitchWebSocketClient.Connect();
+			if (twitchWebSocketClient.IsOpen())
+			{
+
+			}
 		}
 
 		public async Task ForceRefresh()
