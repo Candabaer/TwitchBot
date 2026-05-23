@@ -14,8 +14,10 @@ namespace TwitchBot.Service.Implementation
 		private ClientWebSocket _ClientWebSocket = new ClientWebSocket();
 		private CancellationTokenSource _cts;
 		private Task? _receiveTask;
+		public string WebSocketSessionId { get; set; }
 
-		public async Task Connect()
+
+		public async Task Connect(Func<string, Task> Subscribe)
 		{
 			_cts = new CancellationTokenSource();
 			Console.WriteLine("Connecting to websocket...");
@@ -24,7 +26,7 @@ namespace TwitchBot.Service.Implementation
 
 			try
 			{
-				_receiveTask = Task.Run(() => ReceiveLoop(_cts.Token));
+				_receiveTask = Task.Run(() => ReceiveLoop(_cts.Token, Subscribe));
 			}
 			catch (Exception e)
 			{
@@ -32,7 +34,7 @@ namespace TwitchBot.Service.Implementation
 			}
 		}
 
-		public async Task ReceiveLoop(CancellationToken token)
+		private async Task ReceiveLoop(CancellationToken token, Func<string, Task> Subscribe)
 		{
 			var buffer = new byte[8192];
 			Console.WriteLine("Listening now to the Websocket");
@@ -43,6 +45,18 @@ namespace TwitchBot.Service.Implementation
 					token
 				);
 
+				var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
+				var model = JsonSerializer.Deserialize<WebSocketReceive>(message);
+
+				if (model == null)
+					throw new Exception("Evryting in te shitter");
+
+				if (model.metadata.message_type == "session_welcome")
+				{
+					WebSocketSessionId = model.payload.session.id;
+					Subscribe.Invoke(WebSocketSessionId);
+				}
+
 				if (result.MessageType == WebSocketMessageType.Close)
 				{
 					await _ClientWebSocket.CloseAsync(
@@ -52,10 +66,8 @@ namespace TwitchBot.Service.Implementation
 					);
 					break;
 				}
-				Console.WriteLine(Encoding.ASCII.GetString(buffer, 0, result.Count));
-				var message = Encoding.UTF8.GetString(buffer, 0, result.Count);
-				var model = JsonSerializer.Deserialize<WebSocketReceive>(message);
-				//Console.WriteLine(message);
+
+				Console.WriteLine(message);
 			}
 		}
 

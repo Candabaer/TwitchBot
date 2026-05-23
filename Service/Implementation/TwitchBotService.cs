@@ -5,10 +5,12 @@ namespace TwitchBot.Service.Implementation
 {
 	public class TwitchBotService : IBotService
 	{
+		TwitchWebSocketClient _webSocketClient;
 		TwitchAPIClient _client;
-		public TwitchBotService(IHttpClientFactory httpClientFactory, TwitchAPIClient twitchAPIClient)
+		public TwitchBotService(IHttpClientFactory httpClientFactory, TwitchAPIClient twitchAPIClient, TwitchWebSocketClient twitchWebSocketClient)
 		{
 			_client = twitchAPIClient;
+			_webSocketClient = twitchWebSocketClient;
 		}
 
 
@@ -16,7 +18,12 @@ namespace TwitchBot.Service.Implementation
 		public async Task Run()
 		{
 			await _client.SendMessage();
+			await _client.SendMessage();
+
+			await _webSocketClient.Connect(_client.SubscribeToChat);
 		}
+
+
 
 		public void ConnectToProvider()
 		{

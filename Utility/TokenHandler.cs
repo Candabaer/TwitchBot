@@ -21,7 +21,7 @@ namespace TwitchBot.Utility
 
 		protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken ct)
 		{
-			var token = _userSession._accessToken.access_token;
+			var token = _userSession._userAccessToken.access_token;
 			request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
 			request.Headers.Remove("Client-Id");
 			request.Headers.Add("Client-Id", _config["Twitch:ClientId"]!);
@@ -35,7 +35,7 @@ namespace TwitchBot.Utility
 			{
 				await _userSession.ForceRefresh();
 				request.Headers.Authorization =
-					new AuthenticationHeaderValue("Bearer", _userSession._accessToken.access_token);
+					new AuthenticationHeaderValue("Bearer", _userSession._userAccessToken.access_token);
 
 				response = await base.SendAsync(request, ct);
 			}

@@ -20,6 +20,7 @@ builder.ConfigureServices(services =>
 	services.AddSingleton<TwitchUserSession>();
 
 	services.AddScoped<StartBrowser>();
+	services.AddScoped<TwitchWebSocketClient>();
 
 	services.AddScoped<IBotService, TwitchBotService>();
 	services.AddHostedService<BotRunner>();

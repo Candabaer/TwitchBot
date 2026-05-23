@@ -63,7 +63,7 @@ namespace TwitchBot.Service.Implementation
 			{
 				var response = await _client.PostAsync(_tokenUrl,
 					 new FormUrlEncodedContent(_accessToken));
-
+				Console.WriteLine(response);
 				var accessToken = await response.Content.ReadFromJsonAsync<AccessToken>();
 
 				if (accessToken != null && !String.IsNullOrEmpty(accessToken.access_token))

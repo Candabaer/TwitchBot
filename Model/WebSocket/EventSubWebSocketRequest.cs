@@ -24,11 +24,12 @@ namespace TwitchBot.Model.WebSocket
 
 	public class Condition
 	{
-		public Condition(string user_id)
+		public Condition(IdentityToken identityToken)
 		{
-			this.user_id = user_id;
+			this.broadcaster_user_id = identityToken.user_id;
+			this.user_id = identityToken.user_id;
 		}
-
+		public string broadcaster_user_id { get; set; }
 		public string user_id { get; set; }
 	}
 

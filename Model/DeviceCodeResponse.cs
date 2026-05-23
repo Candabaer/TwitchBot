@@ -12,5 +12,6 @@ namespace TwitchBot.Model
 		public string user_code { get; set; } = string.Empty;
 		public string verification_uri { get; set; } = string.Empty;
 		public int interval { get; set; }
+		public int expires_in { get; set; }
 	}
 }
