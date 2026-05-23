@@ -31,13 +31,13 @@ namespace TwitchBot.Service.Implementation
 		}
 
 
-		public async Task SendMessage()
+		public async Task SendMessage(string message)
 		{
 			var body = new
 			{
 				broadcaster_id = _accessTokenService._identity.user_id,
 				sender_id = _accessTokenService._identity.user_id,
-				message = "Hello from my bot"
+				message = message
 			};
 
 			var json = JsonSerializer.Serialize(body);

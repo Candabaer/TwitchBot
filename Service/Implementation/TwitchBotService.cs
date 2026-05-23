@@ -17,9 +17,6 @@ namespace TwitchBot.Service.Implementation
 
 		public async Task Run()
 		{
-			await _client.SendMessage();
-			await _client.SendMessage();
-
 			await _webSocketClient.Connect(_client.SubscribeToChat);
 		}
 
