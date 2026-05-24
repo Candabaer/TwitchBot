@@ -8,10 +8,8 @@ namespace TwitchBot.Model
 {
 	public class User
 	{
-		private string Name;
-		private string TwitchId;
-		private int Points;
-
-
+		public string Name;
+		public string user_id;
+		public int ChannelPoints;
 	}
 }

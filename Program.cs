@@ -18,10 +18,14 @@ builder.ConfigureServices(services =>
 	services.AddScoped<TwitchAuthService>();
 	services.AddScoped<TwitchAPIClient>();
 	services.AddSingleton<TwitchUserSession>();
+	services.AddSingleton<UserService>();
+	services.AddSingleton<DataStorage>();
 
 	services.AddScoped<StartBrowser>();
-	services.AddScoped<TextParser>();
+	services.AddScoped<ChatReader>();
 	services.AddScoped<TwitchWebSocketClient>();
+	services.AddScoped<BettingGame>();
+	services.AddScoped<DataStorage>();
 
 	services.AddScoped<IBotService, TwitchBotService>();
 	services.AddHostedService<BotRunner>();

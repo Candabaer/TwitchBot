@@ -28,7 +28,7 @@ namespace TwitchBot.Runner
 				Console.WriteLine(e.Message);
 			}
 
-			_bot.Run();
+			await _bot.Run(stoppingToken);
 		}
 	}
 }

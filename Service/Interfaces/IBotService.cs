@@ -2,7 +2,6 @@
 {
 	public interface IBotService
 	{
-		Task Run();
-		void ConnectToProvider();
+		Task Run(CancellationToken cancellationToken);
 	}
 }

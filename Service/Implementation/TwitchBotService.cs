@@ -1,4 +1,6 @@
-﻿using TwitchBot.Model;
+﻿using System.Threading.Channels;
+using TwitchBot.Model;
+using TwitchBot.Model.WebSocket;
 using TwitchBot.Service.Interfaces;
 
 namespace TwitchBot.Service.Implementation
@@ -7,24 +9,31 @@ namespace TwitchBot.Service.Implementation
 	{
 		TwitchWebSocketClient _webSocketClient;
 		TwitchAPIClient _client;
-		public TwitchBotService(IHttpClientFactory httpClientFactory, TwitchAPIClient twitchAPIClient, TwitchWebSocketClient twitchWebSocketClient)
+		ChatReader _textParser;
+		private readonly ChannelReader<ReceiverEvent> _reader;
+		public TwitchBotService(IHttpClientFactory httpClientFactory, TwitchAPIClient twitchAPIClient,
+			TwitchWebSocketClient twitchWebSocketClient, ChatReader parser)
 		{
+			_textParser = parser;
 			_client = twitchAPIClient;
 			_webSocketClient = twitchWebSocketClient;
+			_reader = twitchWebSocketClient.Messages;
 		}
 
-
-
-		public async Task Run()
+		public async Task Run(CancellationToken stop)
 		{
-			await _webSocketClient.Connect(_client.SubscribeToChat);
+			await _webSocketClient.Connect();
+
+			var receive = _webSocketClient.ReceiveLoop(stop, _client.SubscribeToChat);
+			var consume = Consume(stop);
+
+			await Task.WhenAll(receive, consume);
 		}
 
-
-
-		public void ConnectToProvider()
+		private async Task Consume(CancellationToken stop)
 		{
-
+			await foreach (var msg in _reader.ReadAllAsync(stop))
+				await _textParser.Parse(msg);
 		}
 	}
 }
